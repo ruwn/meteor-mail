@@ -111,7 +111,7 @@ li.checked {
     color: #888;
 }
 
-li.checked .text {
+li.checked .folderBar {
     text-decoration: line-through;
 }
 

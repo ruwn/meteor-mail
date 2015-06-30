@@ -7,4 +7,4 @@
 meteor-platform
 autopublish
 insecure
-monbro:mongodb-mapreduce-aggregation
+mrt:mongodb-aggregation
