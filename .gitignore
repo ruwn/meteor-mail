@@ -1,0 +1,13 @@
+## Webstorm
+.idea/
+
+##Binaries
+*.pdf
+*.PDF
+
+## Temp
+*~
+*.tmp
+*.temp
+
+
