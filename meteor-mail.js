@@ -1,5 +1,7 @@
 Mails = new Mongo.Collection("mails");
 
+var selectedFolder = '';
+
 if (Meteor.isClient) {
     // This code only runs on the client
     Template.body.helpers({
@@ -16,10 +18,25 @@ if (Meteor.isClient) {
             Tasks.update(this._id, {$set: {checked: !this.checked}});
         },
         "click .delete": function (e) {
-            var folderName = event.target.value;
             console.log(".delete");
-            console.log(folderName);
-
+            console.log(e.target.value);
+            Meteor.call('removeFolder', e.target.value)
+        },
+        "click .folderBar": function (e) {
+            selectedFolder = event.target.text.value;
+            console.log(selectedFolder);
         }
+    });
+}
+
+if (Meteor.isServer) {
+
+    Meteor.startup( function () {
+        return Meteor.methods( {
+            removeFolder : function (f) {
+                console.log("server::removeFolder:: "+f);
+                return Mails.remove({folder: f});
+            }
+        });
     });
 }
