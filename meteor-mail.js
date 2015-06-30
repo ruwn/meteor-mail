@@ -12,6 +12,20 @@ if (Meteor.isClient) {
         }
     });
 
+    Template.body.events({
+        "submit .new-task": function (event) {
+            // This function is called when the new task form is submitted
+            var newName = event.target.text.value;
+            Meteor.call('renameFolder',selectedFolder,newName);
+
+            // Clear form
+            event.target.text.value = "";
+
+            // Prevent default form submit
+            return false;
+        }
+    });
+
     Template.folder.events({
         "click .toggle-checked": function () {
             // Set the checked property to the opposite of its current value
@@ -23,7 +37,7 @@ if (Meteor.isClient) {
             Meteor.call('removeFolder', e.target.value)
         },
         "click .folderBar": function (e) {
-            selectedFolder = event.target.text.value;
+            selectedFolder = event.target.innerHTML;
             console.log(selectedFolder);
         }
     });
@@ -36,6 +50,11 @@ if (Meteor.isServer) {
             removeFolder : function (f) {
                 console.log("server::removeFolder:: "+f);
                 return Mails.remove({folder: f});
+            },
+
+            renameFolder : function(oldName,newName) {
+                console.log("server::renameFolder:: "+oldName +" "+ newName);
+                return Mails.update({folder: oldName}, {$set: {folder: newName}}, {multi: true});
             }
         });
     });

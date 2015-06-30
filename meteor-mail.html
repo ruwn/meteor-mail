@@ -8,6 +8,9 @@
     <header>
         <h1>Todo List</h1>
         <!-- add a form below the h1 -->
+        <form class="new-task">
+            <input type ="text" name="text" placeholder="Type a new FolderName" />
+        </form>
     </header>
 
     <ul>
@@ -32,7 +35,7 @@
 <template name="folder">
     <li>
         <button class="delete" value={{this}}>&times;</button>
-        <span class="folderBar">{{this}}</span>
+        <span class="folderBar" value={{this}}>{{this}}</span>
     </li>
 
 </template>
