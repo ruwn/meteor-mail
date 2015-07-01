@@ -4,6 +4,11 @@
 </head>
 
 <body>
+<div>
+
+</div>
+
+
 <div class="navbar">
     <header>
         <h1>Todo List</h1>
@@ -15,21 +20,36 @@
 
     <ul>
       {{#each folders}}
-        {{> folder}}
+        {{>folder this}}
       {{/each}}
     </ul>
 
 </div>
 
 <div class="content">
-    <h1>Mail Programm</h1>
+    <header>
+        <h1>MailHeads</h1>
+        {{> newMail}}
+
+
+        <form class="renameMail">
+            <input type ="text" name="text" placeholder="Type a new FolderName" />
+        </form>
+    </header>
+
+    <ul>
+        {{#each mails}}
+            {{>mailHeads}}
+        {{/each}}
+    </ul>
 
 </div>
 
 
 <div class="content2">
-    <h2> mail inhalt</h2>
+    <h1>Single Mail</h1>
 </div>
+
 </body>
 
 <template name="folder">
@@ -37,5 +57,26 @@
         <button class="delete" value={{this}}>&times;</button>
         <span class="folderBar" value={{this}}>{{this}}</span>
     </li>
+</template>
 
+<template name="mailHeads">
+    <li>
+        <button class="deleteMail" value={{this}}>&times;</button>
+        <span class="folderBar" value={{this}}>{{sender}} {{subject}}</span>
+    </li>
+    {{text}}
+</template>
+
+<template name="mail">
+    <h2> {{sender}}</h2>
+    {{text}}
+</template>
+
+<template name="newMail">
+    <form class="new-mail">
+        <input type="text" name="recipiant" placeholder="recipiant" />
+        <input type="text" name="subject" placeholder="subject" />
+        <input type="text" name="text" placeholder="text" />
+        <button >send</button>
+    </form>
 </template>

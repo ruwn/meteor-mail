@@ -18,6 +18,7 @@ body {
     font-size: 14px;
 }
 
+
 .navbar {
     display: block;
     max-width: 200px;
@@ -27,20 +28,22 @@ body {
     float: left;
 }
 
-.content {
-    display: block;
-    max-width: 400px;
-    margin: 0;
-    min-height: 100%;
-    float: auto;
-}
-
 .content2 {
     float: right;
     display: block;
     max-width: 400px;
     margin: 0;
-    min-height: 100%;}
+    min-height: 100%;
+}
+
+.content {
+    display: block;
+    max-width: 400px;
+    margin: 0 auto;
+    min-height: 100%;
+    float: auto;
+}
+
 
 header {
     background: #d2edf4;
@@ -81,6 +84,20 @@ form {
     outline: 0;
 }
 
+.new-mail input {
+    box-sizing: border-box;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    width: 100%;
+    padding-right: 80px;
+    font-size: 1em;
+}
+
+.new-mail input:focus{
+    outline: 0;
+}
+
 ul {
     margin: 0;
     padding: 0;
@@ -88,6 +105,15 @@ ul {
 }
 
 .delete {
+    float: right;
+    font-weight: bold;
+    background: none;
+    font-size: 1em;
+    border: none;
+    position: relative;
+}
+
+.deleteMail {
     float: right;
     font-weight: bold;
     background: none;
